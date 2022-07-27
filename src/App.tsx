@@ -9,16 +9,27 @@ function App() {
 
 	const [wordsArray, setWordsArray] = useState<string[]>([]);
 
+	function handleKeyPressed() {
+		setWordsPosition(wordsPosition + 1);
+	}
+
 	useEffect(() => {
 		setWordsArray(words.split(''));
-		setWordsPosition(0);
 	}, [words, wordsPosition]);
+
+	useEffect(() => {
+		window.addEventListener('keypress', handleKeyPressed);
+		// Remove event listeners on cleanup
+		return () => {
+			window.removeEventListener('keypress', handleKeyPressed);
+		};
+	}, [wordsPosition]);
 
 	return (
 		<div className="flex justify-center p-6">
 			<div className="max-w-5xl">
 				<h1 className="text-5xl font-bold underline mb-8">
-					klika klika
+					klika klika: {wordsPosition}
 				</h1>
 				<p className="text-4xl leading-relaxed tracking-wider">
 					{wordsArray.map((item, index) => {
@@ -34,6 +45,7 @@ function App() {
 						);
 					})}
 				</p>
+
 				{/* <pre>{JSON.stringify(wordsArray)}</pre> */}
 			</div>
 		</div>
