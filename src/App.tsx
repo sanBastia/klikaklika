@@ -6,8 +6,15 @@ function App() {
 	);
 
 	return (
-		<div className="App">
-			<p>{words}</p>
+		<div className="flex justify-center p-6">
+			<div className="max-w-5xl">
+				<h1 className="text-5xl font-bold underline mb-8">
+					klika klika
+				</h1>
+				<p className="text-4xl leading-relaxed tracking-wider">
+					{words}
+				</p>
+			</div>
 		</div>
 	);
 }
