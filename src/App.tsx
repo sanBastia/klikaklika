@@ -18,9 +18,11 @@ function App() {
 					klika klika
 				</h1>
 				<p className="text-4xl leading-relaxed tracking-wider">
-					{words}
+					{wordsArray.map((item, index) => (
+						<span key={index}>{item}</span>
+					))}
 				</p>
-				<pre>{JSON.stringify(wordsArray)}</pre>
+				{/* <pre>{JSON.stringify(wordsArray)}</pre> */}
 			</div>
 		</div>
 	);
