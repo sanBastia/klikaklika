@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 
 interface useKeyPressedProps {
-	(myCallback: string): void;
+	(callback: string): void;
 }
 
 export const useKeyPressed: FunctionComponent<useKeyPressedProps> = (
