@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Navigation } from "./components";
-import { useKeyPressed, generateCharactersArray } from "./utils";
+import { generateCharactersArray } from "./utils";
 
 import { clsx } from "clsx";
+import { useKeyPressed } from "./hooks";
 
 function App() {
   const [indexPosition, setIndexPosition] = useState<number>(0);

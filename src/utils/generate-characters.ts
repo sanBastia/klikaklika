@@ -1,5 +1,5 @@
 import { faker } from "../libs";
-import { CharactersArray } from "./example";
+import { CharactersArray } from "../example";
 
 export function generateCharactersArray() {
   return faker.lorem
@@ -10,6 +10,7 @@ export function generateCharactersArray() {
 }
 
 // Refactored function if needed
+
 // export function generateWhenCorrect(
 //   charactersArray: CharactersArray,
 //   indexPosition: number
