@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { TiKeyboard, TiCog } from 'react-icons/ti';
-import { FaQuestion } from 'react-icons/fa';
+import { DialogComponent } from './index';
 
 interface NavigationProps {}
 
@@ -25,13 +25,7 @@ export const Navigation: FunctionComponent<NavigationProps> = () => {
 					</nav>
 
 					<div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
-						<a
-							className="px-5 py-2 text-sm font-medium rounded-lg"
-							href=""
-						>
-							<FaQuestion size={'2em'} />
-						</a>
-
+						<DialogComponent />
 						<a
 							className="px-5 py-2 text-sm font-medium marker:rounded-lg"
 							href=""
