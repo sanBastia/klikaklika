@@ -1,59 +1,82 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navigation } from "./components";
-import { useKeyPressed, generateWords, getTrimWords } from "./libs";
+import { useKeyPressed, generateCharactersArray } from "./utils";
 
 import { clsx } from "clsx";
 
 function App() {
-  const [words, setWords] = useState(generateWords());
-  const [wordsPosition, setWordsPosition] = useState<number>(0);
-  const [typoCheck, setTypoCheck] = useState<number[]>([]);
-  const [wordsArray, setWordsArray] = useState<string[]>([]);
+  const [indexPosition, setIndexPosition] = useState<number>(0);
+  const [charactersArray, setCharactersArray] = useState(
+    generateCharactersArray()
+  );
 
   const twIsSpace = "border-solid border-2 border-b w-2 border-blue-700";
   const twIsCorrect = "text-gray-400 font-bold";
   const twIsActive = "text-blue-700 font-extrabold";
+  const twIsWrong = "text-red-400 font-bold";
 
   useKeyPressed((key) => {
-    if (key === wordsArray[wordsPosition]) {
-      setWordsPosition(wordsPosition + 1);
+    // Key is the same within array of ["x", 0]
+    if (key === charactersArray[indexPosition][0]) {
+      setIndexPosition(indexPosition + 1);
+      setCharactersArray(
+        charactersArray.map((charState, index) => {
+          if (index === indexPosition) {
+            return [charState[0], 1]; // set to correct
+          }
+          return charState;
+        })
+      );
     }
-    if (key !== wordsArray[wordsPosition]) {
-      setTypoCheck((curTypoCheck) => [
-        ...curTypoCheck,
-        wordsArray.indexOf(wordsArray[wordsPosition]),
-      ]);
+
+    // Key is not the same
+    if (key !== charactersArray[indexPosition][0]) {
+      setIndexPosition(indexPosition + 1);
+      setCharactersArray(
+        charactersArray.map((charState, index) => {
+          if (index === indexPosition) {
+            return [charState[0], -1]; // set to wrong/typo
+          }
+          return charState;
+        })
+      );
     }
   });
-
-  useEffect(() => {
-    setWordsArray(getTrimWords(words));
-  }, []);
 
   return (
     <div className="flex justify-center p-6">
       <div className="max-w-4xl">
         <Navigation />
+        {/* <pre>{JSON.stringify(charactersArray, null, 2)}</pre> */}
+
         <div className="mx-auto p-4 m-4">
           <p className="text-4xl leading-relaxed tracking-wider">
-            {wordsArray.map((item, index) => {
+            {charactersArray.map((charState, index) => {
+              const currentPosition = indexPosition === index;
+
               return (
                 <span
                   key={index}
                   className={clsx(
+                    // default
                     "text-black",
-                    wordsPosition === index && item === " " && twIsSpace,
-                    wordsPosition > index && twIsCorrect,
-                    wordsPosition === index && twIsActive
+                    // is active
+                    currentPosition && twIsActive,
+                    // is space
+                    currentPosition && charState[0] === " " && twIsSpace,
+                    // is correct
+                    charState[1] === 1 && twIsCorrect,
+                    // is wrong/typo
+                    charState[1] === -1 && twIsWrong
                   )}
                 >
-                  {item}
+                  {charState[0]}
                 </span>
               );
             })}
           </p>
         </div>
-        {/* <pre>{JSON.stringify(wordsArray)}</pre> */}
+        {/* <pre>{JSON.stringify(charactersArray)}</pre> */}
       </div>
     </div>
   );
