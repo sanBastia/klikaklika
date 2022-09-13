@@ -26,21 +26,6 @@ function App() {
 	const twIsWrong = 'tracking-wide text-red-700 font-bold';
 
 	useKeyPressed((key) => {
-		// key is backspace
-		let myInterval = setInterval(() => {
-			if (seconds > 0) {
-				setSeconds(seconds - 1);
-			}
-			if (seconds === 0) {
-				if (minutes === 0) {
-					clearInterval(myInterval);
-				} else {
-					setMinutes(minutes - 1);
-					setSeconds(59);
-				}
-			}
-		}, 1000);
-
 		if (key !== charactersArray[indexPosition][0] && key === 'Backspace') {
 			if (indexPosition > 0) {
 				setIndexPosition(indexPosition - 1);
