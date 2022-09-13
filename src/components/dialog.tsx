@@ -15,13 +15,15 @@ export const DialogComponent: FunctionComponent<DialogComponentProps> = () => {
 	const handleOpen = () => setOpen(!open);
 	return (
 		<Fragment>
-			<Button onClick={handleOpen} variant="text">
+			<Button onClick={handleOpen} variant="text" color="gray">
 				<FaQuestion size={'2em'} />
 			</Button>
 			<Dialog open={open} handler={handleOpen}>
 				<DialogHeader>
-					Welcome to{' '}
-					<p className="font-bold font-dynapuff text-4xl">Klica</p>
+					Welcome to
+					<p className="ml-2 font-bold font-dynapuff text-4xl">
+						Klica
+					</p>
 				</DialogHeader>
 				<DialogBody divider>
 					this is a simple typing experience,but it still on

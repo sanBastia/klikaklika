@@ -20,7 +20,7 @@ export const Navigation: FunctionComponent<NavigationProps> = () => {
 
 					<nav className="hidden space-x-8 text-sm font-medium md:flex">
 						<h1 className="font-bold font-dynapuff text-4xl ">
-							KLICA
+							NOOBTYPE
 						</h1>
 					</nav>
 
