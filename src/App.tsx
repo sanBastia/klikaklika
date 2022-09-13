@@ -14,9 +14,6 @@ function App() {
 	const [charactersArray, setCharactersArray] = useState(
 		generateCharactersArray()
 	);
-	const [minutes, setMinutes] = useState(0);
-	const [seconds, setSeconds] = useState(60);
-
 	const [wordCount, setWordCount] = useState(0);
 	const [wpm, setWpm] = useState<string>();
 
@@ -87,9 +84,7 @@ function App() {
 										// is active
 										currentPosition && twIsActive,
 										// is space
-										currentPosition &&
-											charState[0] === ' ' &&
-											twIsSpace,
+										currentPosition && charState[0] === ' ' && twIsSpace,
 										// is correct
 										charState[1] === 1 && twIsCorrect,
 										// is wrong/typo

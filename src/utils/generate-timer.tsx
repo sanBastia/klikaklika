@@ -8,6 +8,7 @@ export const GenerateTimer: FunctionComponent<GenerateTimerProps> = () => {
 		initialSeconds = 60;
 	const [minutes, setMinutes] = useState(initialMinute);
 	const [seconds, setSeconds] = useState(initialSeconds);
+
 	useEffect(() => {
 		let myInterval = setInterval(() => {
 			if (seconds > 0) {
