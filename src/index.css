@@ -2,28 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-.typewriter {
-	border-left: 0.15em solid black; /* The typwriter cursor */
-
-	animation: typing 1s ease-out;
-}
-
-@keyframes typing {
-	from {
-		width: 0;
+@layer base {
+	html {
 	}
-	to {
-		width: 100%;
+
+	body {
 	}
 }
 
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-	from,
-	to {
-		border-color: transparent;
+@layer components {
+	.typing-area {
+		font-family: monospace;
 	}
-	50% {
-		border-color: black;
+
+	/* The typwriter cursor
+	Replace to use position relative */
+	.cursor {
+		position: relative;
+	}
+
+	.cursor::after {
+		content: '|';
+		position: absolute;
+		width: 0px;
+		height: 10px;
+		left: 8px;
+		top: -10px;
+	}
+
+	/* .cursor {
+		border-left: 0.15em solid black;
+		animation: typing 1s ease-out;
+	} */
+
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
+
+	/* The cursor cursor effect */
+	@keyframes blink-caret {
+		from,
+		to {
+			border-color: transparent;
+		}
+		50% {
+			border-color: black;
+		}
 	}
 }

@@ -17,10 +17,10 @@ function App() {
 	const [wordCount, setWordCount] = useState(0);
 	const [wpm, setWpm] = useState<string>();
 
-	const twIsSpace = 'tracking-wide typewriter';
-	const twIsCorrect = 'tracking-wide text-gray-700 font-normal';
-	const twIsActive = 'tracking-wide typewriter';
-	const twIsWrong = 'tracking-wide text-red-700 font-bold';
+	const twIsSpace = 'cursor';
+	const twIsCorrect = 'text-green-700';
+	const twIsActive = 'cursor';
+	const twIsWrong = 'text-red-700';
 
 	useKeyPressed((key) => {
 		if (key !== charactersArray[indexPosition][0] && key === 'Backspace') {
@@ -72,8 +72,8 @@ function App() {
 			<div className="max-w-6xl">
 				<Navigation />
 
-				<div className="mx-auto p-4 m-4">
-					<p className="text-2xl leading-loose tracking-wider">
+				<div className="mx-auto p-4 m-4 typing-area">
+					<p className="text-2xl leading-loose tracking-widest">
 						{charactersArray.map((charState, index) => {
 							const currentPosition = indexPosition === index;
 

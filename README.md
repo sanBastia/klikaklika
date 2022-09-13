@@ -1,5 +1,9 @@
 # Noobtype / Klikaklika
 
+## References
+
+- https://monkeytype.com
+
 ## Timer/Stopwatch
 
 References:
